@@ -1,85 +1,84 @@
+<!DOCTYPE html>
 <html lang="es">
 
 <meta charset="utf-8">
 
 <title>cryptojs-pbkdf2-sha512-aes</title>
-<meta name="description" content="CryptoJs Example">
-<meta name="author" content="Gabriel Porras">
+<meta name="description" content="cryptojs-pbkdf2-sha512-aes">
+<meta name="author" content="nphau">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/png" href="favicon.ico">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
-
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
 
-  <h1>CryptoJS | pbkdf2-sha512-aes EXAMPLE</h1>
-  <i>Documentation: https://code.google.com/archive/p/crypto-js/</i>
-  <i style="color: red;">See document here <a href="https://code.google.com/archive/p/crypto-js"
-      target="_blank">CryptoJS</a></i>
-  <p>
-    PBKDF2 is a password-based key derivation function. In many applications of cryptography, user security is ultimately dependent on a password,
-    and because a password usually can't be used directly as a cryptographic key, some processing is required.
-    A salt provides a large set of keys for any given password, and an iteration count increases the cost of producing keys from a password,
-    thereby also increasing the difficulty of attack.</p>
-  
-  <strong style="color: red;"><label>Original String:</label></strong>
+  <div class="container-fluid">
+    <h1>CryptoJS | pbkdf2-sha512-aes EXAMPLE</h1>
+    <div class="well">
+      <i>Documentation: https://code.google.com/archive/p/crypto-js/</i>
+    </div>
+    <div class="well">
+      PBKDF2 is a password-based key derivation function. In many applications of cryptography, user security is
+      ultimately dependent on a password,
+      and because a password usually can't be used directly as a cryptographic key, some processing is required.
+      A salt provides a large set of keys for any given password, and an iteration count increases the cost of producing
+      keys from a password,
+      thereby also increasing the difficulty of attack.
+    </div>
 
-  <br>
-  <br>
+    <div class="well">
+      SHA-2 (Secure Hash Algorithm 2) is a set of cryptographic hash functions designed by the United States National Security Agency (NSA) 
+      and first published in 2001.[3][4] They are built using the Merkle–Damgård construction, from a one-way compression function itself built using the Davies–Meyer 
+      structure from a specialized block cipher
+    </div>
 
-  <span id="text0"></span>
+     <div class="well">
+      The Advanced Encryption Standard (AES), also known by its original name Rijndael 
+      is a specification for the encryption of electronic data established by
+      the U.S. National Institute of Standards and Technology (NIST) in 2001.[4]
+    </div>
 
-  <br>
-  <br>
+    <div class="panel panel-info">
+      <div class="panel-heading">Original String</div>
+      <div class="panel-body"><span id="text0"></span></div>
+    </div>
 
-  <strong style="color: red;"><label>Encrypted KEY (PBKDF2):</label></strong>
-  
-  <br>
-  <br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Encrypted KEY (PBKDF2)</div>
+      <div class="panel-body"><span id="text1"></span></div>
+    </div>
+    
+    <div class="panel panel-danger">
+      <div class="panel-heading">Encrypted MESSAGE (AES)</div>
+      <div class="panel-body"><span id="text2"></span></div>
+    </div>
 
-  <span id="text1"></span>
+    <div class="panel panel-warning">
+      <div class="panel-heading">Decrypted KEY (PBKDF2)</div>
+      <div class="panel-body"><span id="text3"></span></div>
+    </div>
 
-  <br>
-  <br>
+    <div class="panel panel-success">
+      <div class="panel-heading">Decrypted MESSAGE (AES)</div>
+      <div class="panel-body"><span id="text4"></span></div>
+    </div>
 
-  <strong style="color: red;"><label>Encrypted MESSAGE (AES):</label></strong>
-  
-  <br>
-  <br>
-
-  <span id="text2"></span>
-  
-  <br>
-  <br>
-
-  <strong style="color: red;"><label>Decrypted KEY (PBKDF2):</label></strong>
-  
-  <br>
-  <br>
-
-  <span id="text3"></span>
-
-  <br>
-  <br>
-
-  <strong style="color: red;"><label>Decrypted MESSAGE (AES):</label></strong>
-
-  <br>
-  <br>
-
-  <span id="text4"></span>
-
-  <br />
-  <br />
-
-  <strong style="color: blue;">See more interesting repositories on my <a href="https://github.com/nphau"
-      target="_blank">Github</a></strong>.
-
+    <strong style="color: blue;">See more interesting repositories on my <a href="https://github.com/nphau"
+        target="_blank">Github</a></strong>.
+  </div>
   <script type="text/javascript">
     // INIT
-    let planText = "Hau NGUYEN | A true Software Engineer aspires to build a strong community and help other people grow up. https://nphau.medium.com"
+    let planText =
+      "Hau NGUYEN | A true Software Engineer aspires to build a strong community and help other people grow up. https://nphau.medium.com"
     let password = "bb77219288fa0fe863b4273071c80edd"; // md5 ("https://github.com/nphau")
-    
+
     // ENCRYPT ====================================================================================
 
     // PBKDF2
@@ -87,7 +86,11 @@
     console.log("salt = " + salt);
     let keySize = 64 / 8;
     let iterations = 1000;
-    let encryptedKey = CryptoJS.PBKDF2(password, salt, { hasher: CryptoJS.algo.SHA512, keySize, iterations });
+    let encryptedKey = CryptoJS.PBKDF2(password, salt, {
+      hasher: CryptoJS.algo.SHA512,
+      keySize,
+      iterations
+    });
     console.log("encryptedKey = " + encryptedKey);
     document.getElementById("text0").innerHTML = planText;
     document.getElementById("text1").innerHTML = encryptedKey;
@@ -95,17 +98,24 @@
     // AES
     var iv = CryptoJS.enc.Hex.parse("101112131415161718191a1b1c1d1e1f");
     console.log("iv = " + iv);
-    
-    let encryptedMessage = CryptoJS.AES.encrypt(planText, encryptedKey, { iv: iv });
+
+    let encryptedMessage = CryptoJS.AES.encrypt(planText, encryptedKey, {
+      iv: iv
+    });
     document.getElementById("text2").innerHTML = encryptedMessage;
 
     // DECRYPT ====================================================================================
-    let decryptedKey = CryptoJS.PBKDF2(password, salt, { hasher: CryptoJS.algo.SHA512, keySize, iterations });
+    let decryptedKey = CryptoJS.PBKDF2(password, salt, {
+      hasher: CryptoJS.algo.SHA512,
+      keySize,
+      iterations
+    });
     console.log("decryptedKey = " + decryptedKey);
-    let decryptedMessage = CryptoJS.AES.decrypt(encryptedMessage, decryptedKey, { iv: iv });
+    let decryptedMessage = CryptoJS.AES.decrypt(encryptedMessage, decryptedKey, {
+      iv: iv
+    });
     document.getElementById("text3").innerHTML = decryptedKey;
     document.getElementById("text4").innerHTML = decryptedMessage.toString(CryptoJS.enc.Utf8);
-
   </script>
 </body>
 
